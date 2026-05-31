@@ -4,7 +4,7 @@
 
 | 组件 | 平台 | 访问地址 |
 |------|------|----------|
-| **前端（Demo 入口）** | GitHub Pages | **https://haozh0301-blip.github.io/test/** |
+| **前端（Demo 入口）** | GitHub Pages | **https://haozh0301-blip.github.io/haozh0301-blip.meet.github.io/** |
 | **后端 API** | Render（免费） | `https://meet-api.onrender.com`（部署后确认） |
 
 ---
@@ -13,7 +13,7 @@
 
 1. 打开 [Render Dashboard](https://dashboard.render.com/)
 2. 点击 **New → Blueprint**
-3. 连接 GitHub 仓库 `haozh0301-blip/test`
+3. 连接 GitHub 仓库 `haozh0301-blip/haozh0301-blip.meet.github.io`
 4. Render 会读取根目录 `render.yaml`，创建名为 `meet-api` 的服务
 5. 在 Render 界面填入以下 **Secret** 环境变量（与本地 `.env` 相同）：
    - `DASHSCOPE_API_KEY`
@@ -33,13 +33,13 @@
 
 ### 2.1 启用 GitHub Pages
 
-1. 打开 https://github.com/haozh0301-blip/test/settings/pages
+1. 打开 https://github.com/haozh0301-blip/haozh0301-blip.meet.github.io/settings/pages
 2. **Source** 选择 **GitHub Actions**（不是 Deploy from branch）
 3. 保存
 
 ### 2.2 设置后端地址变量
 
-1. 打开 https://github.com/haozh0301-blip/test/settings/variables/actions
+1. 打开 https://github.com/haozh0301-blip/haozh0301-blip.meet.github.io/settings/variables/actions
 2. 新建 **Repository variable**：
    - Name: `VITE_API_BASE_URL`
    - Value: `https://meet-api.onrender.com`（你的 Render 后端 URL，**不要**末尾斜杠）
@@ -48,20 +48,20 @@
 
 推送代码到 `main` 分支会自动部署；或手动：
 
-1. 打开 https://github.com/haozh0301-blip/test/actions
+1. 打开 https://github.com/haozh0301-blip/haozh0301-blip.meet.github.io/actions
 2. 选择 **Deploy Demo (GitHub Pages)** → **Run workflow**
 
 部署成功后，Demo 入口：
 
 ```text
-https://haozh0301-blip.github.io/test/
+https://haozh0301-blip.github.io/haozh0301-blip.meet.github.io/
 ```
 
 ---
 
 ## 第三步：验证 Demo
 
-1. 打开 https://haozh0301-blip.github.io/test/
+1. 打开 https://haozh0301-blip.github.io/haozh0301-blip.meet.github.io/
 2. 允许麦克风权限
 3. 说：「我在北京中关村，朋友在北京望京」
 4. 等待 ASR → 槽位 → 高德 → 回答 → TTS 全链路完成
@@ -95,6 +95,6 @@ https://haozh0301-blip.github.io/test/
 
 ```bash
 cd frontend
-VITE_BASE_PATH=/test/ VITE_API_BASE_URL=https://meet-api.onrender.com npm run build
+VITE_BASE_PATH=/haozh0301-blip.meet.github.io/ VITE_API_BASE_URL=https://meet-api.onrender.com npm run build
 npm run preview
 ```

@@ -8,7 +8,7 @@
 
 | | 链接 |
 |---|------|
-| **Demo 入口（给他人使用）** | **https://haozh0301-blip.github.io/test/** |
+| **Demo 入口（给他人使用）** | **https://haozh0301-blip.github.io/haozh0301-blip.meet.github.io/** |
 | 后端 API（Render） | https://meet-api.onrender.com |
 
 > 首次部署需按 [docs/DEPLOY.md](docs/DEPLOY.md) 完成 Render 后端 + GitHub Pages 配置。  
@@ -67,8 +67,8 @@
 ### 1. 克隆仓库
 
 ```bash
-git clone git@github.com:haozh0301-blip/test.git
-cd test
+git clone git@github.com:haozh0301-blip/haozh0301-blip.meet.github.io.git
+cd haozh0301-blip.meet.github.io
 ```
 
 ### 2. 后端
