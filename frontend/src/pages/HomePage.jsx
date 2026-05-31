@@ -3,6 +3,7 @@ import VoiceRecorder from '../components/voice/VoiceRecorder';
 import VoicePlayer from '../components/voice/VoicePlayer';
 import RecommendationList from '../components/recommendation/RecommendationList';
 import { useAppContext } from '../context/AppContext';
+import { API_BASE, IS_DEMO } from '../config';
 
 function HomePage() {
   const {
@@ -23,6 +24,16 @@ function HomePage() {
       <section className="home-page__intro">
         <h1>Meet · 语音推荐碰面地点</h1>
         <p>说出你和朋友的位置，系统会推荐多个合适的碰面地点，并语音播报结果。</p>
+        {IS_DEMO && (
+          <p className="home-page__demo-hint">
+            在线 Demo
+            {API_BASE ? (
+              <> · 后端已连接</>
+            ) : (
+              <> · 等待配置后端地址（<code>VITE_API_BASE_URL</code>）</>
+            )}
+          </p>
+        )}
       </section>
 
       <VoiceRecorder onSubmit={submitAudio} isUploading={isUploading} />

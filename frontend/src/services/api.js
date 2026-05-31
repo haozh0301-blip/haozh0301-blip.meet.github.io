@@ -16,6 +16,12 @@ async function parseErrorResponse(response) {
  * @returns {Promise<MeetVoiceResponse>}
  */
 export async function submitVoiceMeet(audioBlob, filename = 'recording.webm') {
+  if (import.meta.env.PROD && !API_BASE) {
+    throw new Error(
+      '在线 Demo 尚未配置后端地址。请在 GitHub 仓库 Variables 中设置 VITE_API_BASE_URL（Render 后端 URL）。'
+    );
+  }
+
   const formData = new FormData();
   formData.append('audio', audioBlob, filename);
 

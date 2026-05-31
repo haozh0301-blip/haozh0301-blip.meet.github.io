@@ -1,8 +1,9 @@
 from pathlib import Path
+import os
 from typing import Any
 from urllib.parse import urlparse, urlunparse
 
-from pydantic import field_validator
+from pydantic import AliasChoices, Field, field_validator
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -19,7 +20,7 @@ class Settings(BaseSettings):
 
     # ── 应用 ──
     app_host: str = "0.0.0.0"
-    app_port: int = 8007
+    app_port: int = Field(default=8007, validation_alias=AliasChoices("APP_PORT", "PORT"))
     app_reload: bool = True
     storage_dir: str = "Storage"
     max_upload_size_mb: int = 20
@@ -107,6 +108,10 @@ class Settings(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> tuple[PydanticBaseSettingsSource, ...]:
+        # 本地开发：仅读 backend/.env，避免系统环境变量干扰
+        # 云端部署（Render 等）：设置 MEET_DEPLOY=true，允许 OS 环境变量覆盖 .env
+        if os.getenv("MEET_DEPLOY", "").strip().lower() in {"1", "true", "yes", "on"}:
+            return (init_settings, env_settings, dotenv_settings, file_secret_settings)
         return (init_settings, dotenv_settings, file_secret_settings)
 
     @property

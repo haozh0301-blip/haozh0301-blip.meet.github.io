@@ -4,6 +4,18 @@
 
 ---
 
+## 在线 Demo
+
+| | 链接 |
+|---|------|
+| **Demo 入口（给他人使用）** | **https://haozh0301-blip.github.io/test/** |
+| 后端 API（Render） | https://meet-api.onrender.com |
+
+> 首次部署需按 [docs/DEPLOY.md](docs/DEPLOY.md) 完成 Render 后端 + GitHub Pages 配置。  
+> Render 免费版有冷启动，首次请求可能较慢。
+
+---
+
 ## 功能概览
 
 - **语音输入**：浏览器麦克风录音，描述两人位置
@@ -172,6 +184,7 @@ Content-Type: multipart/form-data
 | [docs/百炼_接口文档.md](docs/百炼_接口文档.md) | ASR / TTS HTTP 调用 |
 | [docs/DeepSeek_接口文档.md](docs/DeepSeek_接口文档.md) | 槽位提取与回答生成 |
 | [docs/高德MCP_接口文档.md](docs/高德MCP_接口文档.md) | MCP 接入与留档规范 |
+| [docs/DEPLOY.md](docs/DEPLOY.md) | 在线 Demo 部署（GitHub Pages + Render） |
 | [项目思路.md](项目思路.md) | 完整开发过程、踩坑清单、用户提示词 |
 
 ---

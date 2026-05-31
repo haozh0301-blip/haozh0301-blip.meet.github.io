@@ -1,0 +1,26 @@
+# Render Blueprint：一键部署 Meet 后端
+# 文档：https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: meet-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: MEET_DEPLOY
+        value: "true"
+      - key: APP_RELOAD
+        value: "false"
+      - key: PYTHON_VERSION
+        value: "3.12.0"
+      - key: CORS_ORIGINS
+        value: https://haozh0301-blip.github.io,http://localhost:5175
+      - key: DASHSCOPE_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: AMAP_MAPS_API_KEY
+        sync: false
